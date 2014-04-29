@@ -125,6 +125,11 @@ static void DeriveBufferSize (AudioQueueRef audioQueue, AudioStreamBasicDescript
     AudioSessionInitialize(NULL, NULL, nil, (void *)(self));
     UInt32 sessionCategory = kAudioSessionCategory_PlayAndRecord;
     AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(sessionCategory), &sessionCategory);
+    
+    // Override response to speaker
+    UInt32 doChangeDefaultRoute = 1;
+    AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
+    
     AudioSessionSetActive(true);
     
     UInt32 enableLevelMetering = 1;
@@ -242,7 +247,10 @@ static void DeriveBufferSize (AudioQueueRef audioQueue, AudioStreamBasicDescript
 
 - (void)postByteData:(NSData *)byteData {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    NSURL *url = [NSURL URLWithString:@"https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&lang=en-US"];
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",
+    @"https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&pfilter=0&lang=", language];
+    NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:byteData];
