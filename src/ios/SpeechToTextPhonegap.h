@@ -24,5 +24,7 @@
 - (void)init:(CDVInvokedUrlCommand*)command;
 - (void) record:(CDVInvokedUrlCommand*)command;
 - (void) record;
+- (void) stopRecording:(CDVInvokedUrlCommand*)command;
+- (void) stopRecording;
 
 @end

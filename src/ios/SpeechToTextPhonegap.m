@@ -39,6 +39,20 @@
     NSLog(@"record");
 }
 
+
+- (void)stopRecording:(CDVInvokedUrlCommand*)command
+{
+    [self stopRecording];
+    [self.commandDelegate runInBackground:^{
+        //[self stopRecording];
+    }];
+}
+
+- (void) stopRecording {
+    [self.speechToTextObj stopRecording:YES];
+    NSLog(@"stop");
+}
+
 #pragma mark - SpeechToTextModule Delegate -
 - (BOOL)didReceiveVoiceResponse:(NSData *)data
 {
