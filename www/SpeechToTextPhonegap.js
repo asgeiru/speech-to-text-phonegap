@@ -1,5 +1,5 @@
 var SpeechToTextPhonegap = {
-    init: function(str, callback)
+    init: function(callback)
     {
         cordova.exec(
             function(data)
@@ -16,34 +16,26 @@ var SpeechToTextPhonegap = {
         );
     },
 
-    record: function(str, callback)
+    record: function(maxListeningTime)
     {
         cordova.exec(
-            function(data)
-            {
-                callback(JSON.parse(data));
-            },
-            function(err)
-            {
-                callback(err);
-            },
+            function(){},
+            function(){},
             "SpeechToTextPhonegap",
             "record",
             []
         );
+
+        if(typeof maxListeningTime !== 'undefined' && maxListeningTime !== null) {
+            setTimeout(this.stopRecording.bind(this), maxListeningTime);
+        }
     },
     
-    stopRecording: function(str, callback)
+    stopRecording: function()
     {
         cordova.exec(
-            function(data)
-            {
-                callback(JSON.parse(data));
-            },
-            function(err)
-            {
-                callback(err);
-            },
+            function(){},
+            function(){},
             "SpeechToTextPhonegap",
             "stopRecording",
             []
