@@ -26,9 +26,9 @@ window.SpeechToTextPhonegap.init(function(data)
 ```
 
 Start recording
-
+@param (int) millisecond before to automatically stop record [optional]
 ```
-window.SpeechToTextPhonegap.record();
+window.SpeechToTextPhonegap.record(6000);
 ```
 
 Exemple of return object
