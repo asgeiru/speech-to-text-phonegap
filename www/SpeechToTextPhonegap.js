@@ -1,5 +1,5 @@
 var SpeechToTextPhonegap = {
-    init: function(callback)
+    init: function(apiKey, callback)
     {
         cordova.exec(
             function(data)
@@ -12,15 +12,15 @@ var SpeechToTextPhonegap = {
             },
             "SpeechToTextPhonegap",
             "init",
-            []
+            [apiKey]
         );
     },
 
     record: function(maxListeningTime)
     {
         cordova.exec(
-            function(){},
-            function(){},
+            null,
+            null,
             "SpeechToTextPhonegap",
             "record",
             []
@@ -34,8 +34,8 @@ var SpeechToTextPhonegap = {
     stopRecording: function()
     {
         cordova.exec(
-            function(){},
-            function(){},
+            null,
+            null,
             "SpeechToTextPhonegap",
             "stopRecording",
             []

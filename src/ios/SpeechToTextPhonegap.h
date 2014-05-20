@@ -15,6 +15,9 @@
     NSString *callbackId;
     CDVPluginResult* pluginResult;
     
+    // PARAMS
+    NSString *apiKey;
+    
     // UTIL
     NSThread *thread;
 }

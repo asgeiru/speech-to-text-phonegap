@@ -54,6 +54,8 @@ typedef struct AQRecorderState {
     
     AQRecorderState aqData;
     
+    NSString *consoleApiKey;
+    
     BOOL detectedSpeech;
     int samplesBelowSilence;
     
@@ -67,6 +69,9 @@ typedef struct AQRecorderState {
 
 @property (readonly) BOOL recording;
 @property (assign) id<SpeechToTextModuleDelegate> delegate;
+
+// Since google api V2 needs Api key
+- (id)initWithApiKey:(NSString *)apiKey;
 
 // Begins a voice recording
 - (void)beginRecording;
