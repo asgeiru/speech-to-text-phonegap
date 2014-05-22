@@ -166,6 +166,8 @@ static void DeriveBufferSize (AudioQueueRef audioQueue, AudioStreamBasicDescript
             aqData.mIsRunning = true;
             [self reset];
             AudioQueueStart(aqData.mQueue, NULL);
+            if ([delegate respondsToSelector:@selector(startSpeeking)])
+                [delegate startSpeeking];
         }
     }
 }
