@@ -58,6 +58,10 @@
     NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     responseString = [responseString stringByReplacingOccurrencesOfString:@"{\"result\":[]}\n" withString:@""];
     
+    if([responseString isEqualToString:@""]) {
+        responseString = @"{\"result\": []}";
+    }
+    
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:responseString];
     [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
@@ -67,7 +71,8 @@
 
 - (void)showLoadingView
 {
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"showLoadingView"];
+    NSString *responseString = @"{\"message\": \"showLoadingView\"}";
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:responseString];
     [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
 }
