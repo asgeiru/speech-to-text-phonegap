@@ -46,6 +46,7 @@ typedef struct AQRecorderState {
 
 @optional
 - (void)showLoadingView;
+- (void)startSpeeking;
 - (void)requestFailedWithError:(NSError *)error;
 @end
 
