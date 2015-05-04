@@ -24,7 +24,7 @@
         </config-file>
 
         <header-file src="src/ios/SpeechToTextModule.h" />
-        <source-file src="src/ios/SpeechToTextModule.m" />
+        <source-file src="src/ios/SpeechToTextModule.m" compiler-flags="-fno-objc-arc" />
         <header-file src="src/ios/SpeechToTextPhonegap.h" />
         <source-file src="src/ios/SpeechToTextPhonegap.m" />
 
