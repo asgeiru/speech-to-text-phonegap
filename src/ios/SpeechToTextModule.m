@@ -206,8 +206,9 @@ static void DeriveBufferSize (AudioQueueRef audioQueue, AudioStreamBasicDescript
 
 - (void)postByteData:(NSData *)byteData {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    // Language list at http://stackoverflow.com/a/14302134
     NSString *language = @"is";
-    NSString *language2 =[[NSLocale preferredLanguages] objectAtIndex:0];
+    //NSString *language =[[NSLocale preferredLanguages] objectAtIndex:0];
     NSString *urlString = [NSString stringWithFormat:@"https://www.google.com/speech-api/v2/recognize?key=%@&xjerr=1&client=chromium&pfilter=0&lang=%@", consoleApiKey, language];
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
