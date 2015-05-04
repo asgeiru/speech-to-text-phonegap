@@ -1,3 +1,5 @@
+###This fork was created to make the plugin work with phongap build###
+
 How to install :
 ====
 

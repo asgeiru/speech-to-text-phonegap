@@ -1,15 +1,19 @@
-	<?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="fr.adfab.speechtotextphonegap" version="1.3.3">
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="org.golin.cordova.videoeditor" version="1.3.3" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <name>SpeechToTextPhonegap</name>
+    <description>A plugin to convert speech to text for ios</description>
+    <repo>https://github.com/goling/speech-to-text-phonegap.git</repo>
+    <license>MIT</license>
+    <keywords>speech,text,cordova,mzeeshanid,todoroo</keywords>
 
     <engines>
         <engine name="cordova" version=">=3.4.0" />
     </engines>
 
-    <name>SpeechToTextPhonegap</name>
-    <description>Plugin cordova using https://github.com/mzeeshanid/iOS-Speech-To-Text base on https://github.com/todoroo/iPhone-Speech-To-Text</description>
-    <author>nicolas labbé</author>
-    <license>MIT</license>
-    <keywords>speech,text,cordova,mzeeshanid,todoroo</keywords>
+    <js-module src="www/SpeechToTextPhonegap.js" name="SpeechToTextPhonegap">
+        <clobbers target="window.SpeechToTextPhonegap" />
+    </js-module>
 
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
@@ -25,13 +29,7 @@
         <source-file src="src/ios/SpeechToTextPhonegap.m" />
 
         <framework src="AudioToolbox.framework" weak="true" />
-
-        <framework src="src/ios/frameworks/Speex.framework" custom="true" />
-
-		<!-- android specific notification apis -->
-		<js-module src="www/SpeechToTextPhonegap.js" name="SpeechToTextPhonegap">
-			<clobbers target="window.SpeechToTextPhonegap" />
-		</js-module>
+        <framework src="src/ios/frameworks/Speex.framework" custom="true" />		
     </platform>
 
 </plugin>
